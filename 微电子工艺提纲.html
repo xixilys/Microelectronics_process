@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>微电子工艺提纲.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%BE%AE%E7%94%B5%E5%AD%90%E5%B7%A5%E8%89%BA">微电子工艺</h1>
+<h2 id="%E9%A2%98%E5%9E%8B">题型</h2>
+<ul>
+<li>第一题：单步工艺，现象的名词解释</li>
+<li>第二题：简答题，如何避免什么什么现象</li>
+<li>第三题：一个工艺流程，考什么流程，最后几节课</li>
+<li>第四题：计算题</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%B8%80%E7%AB%A0-%E7%BB%AA%E8%AE%BA">第一章 绪论</h2>
+<h3 id="%E5%AF%BC%E4%BD%93%E7%BB%9D%E7%BC%98%E4%BD%93%E5%8D%8A%E5%AF%BC%E4%BD%93">导体，绝缘体，半导体</h3>
+<h3 id="%E7%A1%85%E7%89%87%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7">硅片重要特性</h3>
+<ul>
+<li>纯度很高，含有一定量的氧，有助于移动离子玷污</li>
+<li>非常扁平</li>
+<li>尺寸精确</li>
+<li>精确的电阻率和掺杂</li>
+<li>晶向需要为&lt;1,1,1&gt; 或 &lt;1,0,0&gt;</li>
+<li>表面粒子数需要非常少</li>
+</ul>
+<h3 id="%E7%A1%85%E7%89%87%E5%88%B6%E5%A4%87">硅片制备</h3>
+<ul>
+<li>提炼硅
+<ul>
+<li>方式比较复杂，需要先生成冶金级硅(MGS)，而后制备电子级硅(EGS)</li>
+<li>单晶生长
+<ul>
+<li>CZ法工艺
+<ul>
+<li>将熔化了的半导体级硅(SGS)变为具有正确晶向并且北掺杂的固体</li>
+<li>可以忍受高温</li>
+<li>可以制造大尺寸的晶体</li>
+<li>成本较低</li>
+</ul>
+</li>
+<li>FZ法工艺
+<ul>
+<li>不采用坩埚，在压力反应室中进行，由RF线圈直接加热</li>
+<li>纯度最高，含氧量少</li>
+<li>改善对整个单晶长度上电阻率的控制</li>
+</ul>
+</li>
+<li>玷污控制
+<ul>
+<li>玷污类型:颗粒，金属杂质，有机物污染，自然氧化层</li>
+<li>半导体制造中可以接受的颗粒大小为: 小于器件特征尺寸的一半</li>
+<li>危害工艺的典型金属杂质为碱金属
+<ul>
+<li>可动离子玷污(MIC)</li>
+<li>电学测试的体现之一 -&gt; 改变了晶体管的阈值电压</li>
+</ul>
+</li>
+<li>自然演化层:暴露于室温下的空气或含溶解氧的去离子水中硅片的表面被氧化
+<ul>
+<li>影响半导体性能和可靠性</li>
+<li>阻碍其他工艺步骤的进行，如在硅片上单晶薄膜的生长和超薄栅极氧化层的生长</li>
+<li>引起金属导体中的接触问题</li>
+<li>自然氧化从了各种包含某些金属杂质，可以向si中转移并形成电学缺陷</li>
+<li>静电释放(ESD)
+<ul>
+<li>静电荷从一个物体向另一个物品未经控制的转移</li>
+</ul>
+</li>
+<li>玷污源
+<ul>
+<li>空气 超净间</li>
+<li>人是颗粒的最大来源，来自于人头发、头发物品、衣服纤维等
+<ul>
+<li>使用超净服 对身体产生的颗粒等的控制</li>
+</ul>
+</li>
+<li>系统方法控制净化区域的输入输出
+<ul>
+<li>控制气流，空气，温度和湿度等状态</li>
+</ul>
+</li>
+<li>使用去离子水
+<ul>
+<li>去离子水中不允许含有溶解离子</li>
+</ul>
+</li>
+<li>硅片的湿法清洗
+<ul>
+<li>去除表面玷污：颗粒，有机物，金属和自然氧化层</li>
+<li>RCA清洗：工业标准，由一系列有序的浸入两种不同的化学溶液组成
+<ul>
+<li>1号标准清洗液 -&gt; 去除颗粒和有机物质</li>
+<li>2号标准清洗液 -&gt; 去除金属和某些有机物</li>
+<li>使用温度  -&gt;  75~85摄氏度</li>
+<li>高温，大量使用化学药品和超纯水</li>
+</ul>
+</li>
+<li>改进的RCA清洗
+<ul>
+<li>稀释的化学清洗剂=</li>
+</ul>
+</li>
+<li>最后的HF步骤，去除表面的自然氧化层</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E8%8A%AF%E7%89%87%E5%88%B6%E9%80%A0">芯片制造</h3>
+<ul>
+<li>横向加工：图形的产生与转移，又称为光刻</li>
+<li>纵向加工：掺杂（扩散，离子注入） 薄膜制备（热氧化，蒸发，溅射，CVD）</li>
+<li>mos制备工艺
+<ol>
+<li>显影(第一次图形转移)</li>
+<li>刻蚀(第二次图形转移)</li>
+<li>去胶</li>
+<li>掺杂</li>
+<li>CVD淀积SiO2</li>
+<li>光刻接触孔</li>
+<li>蒸镀铝膜</li>
+<li>光刻铝电极</li>
+</ol>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%BA%8C%E7%AB%A0-pmos%E5%9F%BA%E6%9C%AC%E5%B7%A5%E8%89%BA">第二章 PMOS基本工艺</h2>
+<h3 id="%E6%9D%90%E6%96%99%E7%9A%84%E5%87%86%E5%A4%87-%E6%8F%90%E7%BA%AF%E7%A1%85">材料的准备-提纯硅</h3>
+<h3 id="%E7%A1%85%E7%89%87%E7%9A%84%E5%88%B6%E5%A4%87-%E5%BE%97%E5%88%B0%E9%80%82%E5%90%88%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E7%9A%84%E7%A1%85%E7%89%87">硅片的制备-得到适合集成电路的硅片</h3>
+<h3 id="%E8%8A%AF%E7%89%87%E7%9A%84%E5%88%B6%E5%A4%87-%E5%9C%A8%E7%A1%85%E7%89%87%E4%B8%8A%E5%88%B6%E9%80%A0%E5%87%BA%E5%89%A7%E5%93%A6%E4%B8%8E%E4%B8%80%E5%AE%9A%E5%8A%9F%E8%83%BD%E7%9A%84%E5%99%A8%E4%BB%B6%E5%92%8C%E7%94%B5%E8%B7%AF">芯片的制备-在硅片上制造出剧哦与一定功能的器件和电路</h3>
+<ul>
+<li>成膜(layering)
+<ul>
+<li>在硅片表面生长不同的膜层</li>
+<li>方法:生长、淀积</li>
+</ul>
+</li>
+<li>图案生成
+<ul>
+<li>去除硅片表面膜层的所选区域，构建器件图形和结构
+<ul>
+<li>光刻(生成临时图像)、刻蚀(生成永久图像)</li>
+<li>图像生成是最关键的工艺步骤</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>掺杂
+<ul>
+<li>根据图案生成的窗口建立N型和P型区域</li>
+<li>主要工艺为扩散和离子注入</li>
+</ul>
+</li>
+<li>热处理
+<ul>
+<li>加入硅片以达到预期的结果</li>
+<li>主要工艺
+<ul>
+<li>退火(1000摄氏度)</li>
+<li>合金化(450摄氏度)</li>
+</ul>
+</li>
+<li>硅片清洗
+<ul>
+<li>去除硅表面的玷污而不对硅产生任何损害或结构的改变</li>
+<li>湿法清洗，蒸汽清洗、等离子体清洗、超声清洗和抛光等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>封装-为完成的芯片加上保护套</li>
+</ul>
+<h3 id="pmos%E6%99%B6%E4%BD%93%E7%AE%A1%E7%9A%84%E5%B7%A5%E8%89%BA%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B">PMOS晶体管的工艺流程简介</h3>
+<ol>
+<li>生成一层厚二氧化硅，作为掺杂阻挡层，也称场氧</li>
+<li>
+<ol>
+<li>涂胶</li>
+<li>曝光，产生临时源漏区图形</li>
+<li>显影，形成源漏区图形</li>
+<li>湿法刻蚀source/drain的二氧化硅层</li>
+<li>除胶。在二氧化硅上留下一个永久的图形</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>(doping)采用SOD。P通过二氧化硅上的窗口进入si中，初步形成source和drain区</li>
+<li>(heat treatment)利用高温(1000摄氏度)驱使掺杂杂质深入si中，最终形成source和drain</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>湿法刻蚀去除SOD和场氧化层</li>
+<li>生成一层场氧化层</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>涂胶</li>
+<li>曝光形成光刻胶的栅区图形</li>
+<li>显影，完整的栅区临时图案</li>
+<li>湿法刻蚀去除栅区的场氧化层</li>
+<li>去除光刻胶</li>
+</ol>
+</li>
+<li>生成薄氧化膜作为晶体管的栅氧化层(真的很薄很薄)</li>
+<li>
+<ol>
+<li>涂光刻胶</li>
+<li>光刻胶曝光，生成接触孔图形</li>
+<li>光刻胶显影，生成接触孔的临时图案</li>
+<li>接触孔区刻蚀</li>
+<li>去除光刻胶</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>在整个wafer表面进行铝层沉淀</li>
+<li>(热处理)铝在合适的温度下(450度)与si形成较好的欧姆接触</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>涂光刻胶</li>
+<li>曝光，生成临时图案，确定金属互联和栅电极</li>
+<li>光刻胶显影，金属互联线和栅接触点的临时图案</li>
+<li>刻蚀金属形成互连线和栅接触点</li>
+<li>去除光刻胶，工艺结束
+10.进行测试·</li>
+</ol>
+</li>
+</ol>
+<h2 id="%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8D%95%E6%AD%A5%E5%B7%A5%E8%89%BA-%E5%85%89%E5%88%BB">第三章 单步工艺-光刻</h2>
+<h3 id="%E5%85%89%E5%88%BB%E5%8A%9F%E8%83%BD">光刻功能</h3>
+<ul>
+<li>利用类似于洗印照片的原理，通过曝光和选择性化学腐蚀等工序将掩膜版上的集成电路图形印制到硅片上的精密表面加工技术</li>
+<li>通过光学方法进行图片复制的过程</li>
+<li>2D图形转移</li>
+<li>形成与掩膜版上完全对应的几何图形，这样光刻胶可以用作刻蚀的掩蔽膜</li>
+</ul>
+<h3 id="%E5%85%89%E5%88%BB3%E8%A6%81%E7%B4%A0">光刻3要素</h3>
+<ul>
+<li>光刻胶
+<ul>
+<li>混合物，在一定波长的光照射下结构发生改变</li>
+<li>分类
+<ul>
+<li>正胶
+<ul>
+<li>经过光照的部分发生裂解</li>
+<li>未照射的部分凝固</li>
+<li>分辨率高，粘附性好，成本高</li>
+</ul>
+</li>
+<li>负胶
+<ul>
+<li>经过光照的部分发生交联，在显影液中不溶解</li>
+<li>感光速度高，粘附性好，抗腐蚀能力强，成本低，分辨率低</li>
+</ul>
+</li>
+<li>利用同样的掩膜版，用正胶和负胶得到的光刻图形完全相反，图形互补</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>掩膜版
+<ul>
+<li>用来转移图形的母版</li>
+<li>碱石灰玻璃+Cr</li>
+<li>制造
+<ul>
+<li>光学图形发射器</li>
+<li>电子束</li>
+</ul>
+</li>
+<li>极性
+<ul>
+<li>亮场 大部分透明，图形区不透明</li>
+<li>暗场 相反</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>光源系统
+<ul>
+<li>适当波长
+<ul>
+<li>波长越短，可曝光的特性尺寸越小</li>
+<li>衍射效应是光学曝光技术中心限制分辨率的主要因素</li>
+<li>足够的能量，并且曝光的能量均匀分布在曝光区</li>
+</ul>
+</li>
+<li>光源分类
+<ul>
+<li>紫外光光源</li>
+<li>深紫外光</li>
+<li>激光脉冲等离子体</li>
+<li>电子束、X光、粒子束</li>
+</ul>
+</li>
+<li>光刻流程
+<ol>
+<li>step1
+<ol>
+<li>表面清洗和脱水烘烤
+<ul>
+<li>清洁干燥的硅片表明能与光刻胶保持良好的粘附并有利于获得平坦的光刻胶图层</li>
+<li>方法：刷片、化学清洗</li>
+<li>烘烤方法：在150度~200度真空或干燥氮气中</li>
+</ul>
+</li>
+<li>增粘处理
+<ul>
+<li>绝大多数光刻胶为疏水的，而氧化物表面羟基为亲水的，两者表面粘附性不好</li>
+<li>典型的增黏剂：HMDS</li>
+<li>亲水的带羟基的硅烷醇。。。</li>
+<li>涂覆方法：蒸气涂布法和旋转涂布法</li>
+</ul>
+</li>
+<li>涂胶
+<ul>
+<li>胶厚均匀性很重要</li>
+<li>越厚分辨率越低</li>
+<li>胶的厚度与转速有关</li>
+<li>甩胶设备
+<ul>
+<li>静态光刻胶分配</li>
+<li>动态的固定臂分配</li>
+<li>动态移动壁分配</li>
+</ul>
+</li>
+<li>卷边去除(EBR)
+<ul>
+<li>卷边-&gt; 晶圆外边缘上堆积的光刻胶</li>
+<li>曝光时聚焦出问题</li>
+<li>污染，特别是卷边脱落造成的污染</li>
+<li>方法
+<ul>
+<li>光学EBR,利用光使边缘的光刻胶曝光，并且在显影时去除</li>
+<li>化学EBR，在晶圆的正面或者背面涂溶剂，溶解边缘上的光刻胶</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>前烘
+<ul>
+<li>作用，去除胶中的大部分溶剂，提高胶的粘附性，使胶的曝光特性稳定</li>
+<li>典型前烘温度为90~100摄氏度，10~30min</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>对准与曝光
+<ol>
+<li>对准，指与前面工艺形成的图形进行套准</li>
+<li>曝光，使光刻胶充分感光</li>
+</ol>
+</li>
+<li>显影
+<ul>
+<li>利用溶剂去除光刻胶</li>
+<li>正胶
+<ul>
+<li>碱金属溶液 NaOH,$NH_4OH$,TMAH</li>
+</ul>
+</li>
+<li>负胶
+<ul>
+<li>二甲苯</li>
+</ul>
+</li>
+<li>速率影响速率  显影液的浓度，温度</li>
+</ul>
+<ol>
+<li>曝光前烘焙</li>
+<li>湿化学显影</li>
+<li>DI水漂洗</li>
+<li>显影检查
+<ul>
+<li>如果出问题还能去除光刻胶重做，对于晶片基本无影响</li>
+</ul>
+</li>
+<li>后烘(坚膜)
+<ul>
+<li>去除残留溶剂 提高粘附力和抗腐蚀性</li>
+<li>烘烤条件100~140摄氏度</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>形成永久图案
+<ul>
+<li>刻蚀：湿化学 等离子来除去没有覆盖光刻胶的薄膜</li>
+<li>离子注入：在没有覆盖光刻胶的区域注入杂质</li>
+</ul>
+</li>
+<li>去除光刻胶
+<ol>
+<li>去胶
+<ul>
+<li>湿法
+<ul>
+<li>麻烦死了，好难敲</li>
+</ul>
+</li>
+<li>干法
+<ul>
+<li>相比于湿法，操作简单安全，难引入污染， 能与干法腐蚀在一个设备中进行，不损伤下层衬底</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查是否对准，是否存在缺陷</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E5%B7%A5%E8%89%BA%E5%85%B6%E4%BB%96%E7%82%B9">工艺其他点</h3>
+<ul>
+<li>光刻种类
+<ul>
+<li>接触曝光，分辨率1-2$\mu m$
+<ul>
+<li>优点
+<ul>
+<li>简单，成本低</li>
+<li>一次曝光一块硅片，速度快</li>
+<li>间隙为0，衍射误差较小(衍射的影响较小)</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>掩膜版损耗、污染、</li>
+<li>掩膜版与硅片尺寸相同</li>
+<li>特征尺寸大</li>
+<li>聚焦深度小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接近曝光：分辨率5$\mu m$
+<ul>
+<li>优点
+<ul>
+<li>简单，成本低</li>
+<li>一次曝光一块硅片，速度快</li>
+<li>无掩膜版损耗和污染</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>掩膜版与硅片尺寸相同</li>
+<li>间隙不为0，衍射误差大</li>
+<li>特征尺寸大</li>
+<li>聚焦深度小</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>投射曝光，分辨率 &lt;0.5$\mu m$
+<ul>
+<li>优点
+<ul>
+<li>无掩膜版损耗和污染</li>
+<li>掩膜版比实际尺寸大5~10倍</li>
+<li>对掩膜版要求低，精度高</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>一次曝光一个管芯，速度慢</li>
+<li>设备昂贵</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>工艺中可能出现的问题
+<ul>
+<li>甩胶缺陷</li>
+<li>套准缺陷</li>
+<li>显影缺陷</li>
+<li>光刻胶脱落缺陷</li>
+</ul>
+</li>
+<li>光刻误差
+<ul>
+<li>表面反射：Ghost现象
+<ul>
+<li>穿过光刻胶的光会从硅片表面反射出来，从而改变光刻胶吸收的光能，特别是硅片表面的金属层会反射较多的光</li>
+<li>硅片表面倾斜的台阶侧面会将光反射到飞曝光区</li>
+<li>解决办法
+<ul>
+<li>改变淀积参数控制反射率</li>
+<li>使表面平坦</li>
+<li>光刻胶下面加一层防止反射的物质</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对准Overlay(对准误差)</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%8D%95%E6%AD%A5%E5%B7%A5%E8%89%BA-mems%E5%85%89%E5%88%BB">第三章 单步工艺-MEMS光刻</h2>
+<h3 id="%E6%B7%B1%E6%A7%BD%E5%85%89%E5%88%BB">深槽光刻</h3>
+<ul>
+<li>表面微结构
+<ul>
+<li>表面起伏1-2$\mu m$</li>
+<li>在MEMS制造中，表面带有微结构和深槽，10~100$\mu m$</li>
+<li>旋涂，会发生光刻胶聚积
+<ul>
+<li>喷涂</li>
+<li>电镀</li>
+</ul>
+</li>
+<li>曝光问题，入射光反射
+<ul>
+<li>版图设计时候进行补偿</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>厚胶光刻
+<ul>
+<li>集成电路光刻厚度 1$\mu m$</li>
+<li>MEMS中光刻层厚度$1\mu m -  1mm$</li>
+<li>问题
+<ul>
+<li>曝光衍射和散射</li>
+<li>分辨率下降</li>
+<li>曝光剂量不够</li>
+<li>采用聚焦深度递进的方法对厚胶进行曝光，降低失真</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>双面光刻
+<ul>
+<li>$KOH$进行背部刻蚀，制作压阻式压力传感器</li>
+<li>并且会形成深槽，但是是斜着的</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8D%95%E6%AD%A5%E5%B7%A5%E8%89%BA-%E5%88%BB%E8%9A%80">第四章 单步工艺 刻蚀</h2>
+<h3 id="%E5%88%BB%E8%9A%80%E7%AE%80%E4%BB%8B">刻蚀简介</h3>
+<ul>
+<li>向基底深度方向进行的技术，实现三维结构的重要方法</li>
+<li>选择性去除部分材料</li>
+<li>IC(只刻蚀薄膜)  MEMS(刻蚀薄膜和衬底)</li>
+<li>分类
+<ul>
+<li>湿法刻蚀
+<ul>
+<li>液体刻蚀剂</li>
+</ul>
+</li>
+<li>干法刻蚀
+<ul>
+<li>气体刻蚀剂</li>
+<li>等离子体刻蚀</li>
+</ul>
+</li>
+<li>各向同性
+<ul>
+<li>完全各向同性：水平刻蚀速率 = 垂直刻蚀速率</li>
+</ul>
+</li>
+<li>各向异性
+<ul>
+<li>完全各向异性：水平刻蚀速率 = 0</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E6%B9%BF%E6%B3%95%E5%88%BB%E8%9A%80">湿法刻蚀</h3>
+<ul>
+<li>IC湿法刻蚀
+<ul>
+<li>二氧化硅刻蚀
+<ul>
+<li>HF + 水</li>
+<li>二氧化硅和硅的选择比接近无穷大</li>
+<li>缓冲氢氟酸BHF
+<ul>
+<li>加入$NH_4F$保持恒定的$H^+$浓度，以获得稳定的刻蚀速度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>氮化硅刻蚀
+<ul>
+<li>沸腾磷酸溶液刻蚀氮化硅</li>
+<li>刻蚀速率：~100A/min @180摄氏度</li>
+<li>选择比
+<ul>
+<li>氮化硅：二氧化硅= 10：1</li>
+<li>氮化硅：硅 = 30：1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>铝刻蚀
+<ul>
+<li>硅或二氧化硅表面AL</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MEMS湿法刻蚀(刻蚀薄膜和硅)
+<ul>
+<li>各向异性和各向同性刻蚀，各有不同</li>
+<li>各向异性湿法刻蚀 可是速度与晶向有关，不同晶向的基底刻蚀结果不同
+<ul>
+<li>(100)掩蔽层中，Si3N4基本不刻蚀，sio2 1- 10nm /min</li>
+<li>影响速度的关键
+<ul>
+<li>温度不均匀性</li>
+<li>反应物浓度随刻蚀进行不断降低</li>
+<li>液体挥发，混合不均匀，反应物浓度不均匀</li>
+</ul>
+</li>
+<li>晶向惨杂质浓度</li>
+</ul>
+</li>
+<li>利用刻蚀时间进行控制，</li>
+<li>利用浓硼掺杂来进行控制</li>
+<li>利用pn结来控制刻蚀停止
+<ul>
+<li>反偏pn结</li>
+<li>不稳定，操作复杂，需要复杂的刻蚀</li>
+</ul>
+</li>
+<li>刻蚀的保护
+<ul>
+<li>双面刻蚀或者带有ic以及加工好的结构，需要保护</li>
+<li>保护方式：机械夹具 黑胶 浮片</li>
+</ul>
+</li>
+<li>各向异性湿法刻蚀
+<ul>
+<li>乙烯乙二胺邻苯二酚(EDP)
+<ul>
+<li>刻蚀过程非常稳定可控，刻蚀铝，致癌，腐蚀</li>
+</ul>
+</li>
+<li>压阻压力传感器由承载薄膜和膜片的应力敏感压阻构成，当膜片在压力作用下变形时改变压阻阻值，通过电桥测量阻值变化可以得到压力大小</li>
+</ul>
+</li>
+<li>优缺点
+<ul>
+<li>操作简单，成本低</li>
+<li>碱金属与IC不兼容，引起粒子污染</li>
+<li>各向异性较差</li>
+<li>难以精确控制</li>
+<li>一般不用于重要图形的刻蚀</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>干法刻蚀
+<ul>
+<li>氯基:(Si的各向异性)
+<ul>
+<li>气体：Cl2和BCl3</li>
+<li>刻蚀 Si Au Ti TiN Resist</li>
+</ul>
+</li>
+<li>氟基
+<ul>
+<li>气体 SF6 CF4 CHF3</li>
+<li>刻蚀 Si TiW SiO2</li>
+</ul>
+</li>
+<li>氧基
+<ul>
+<li>气体 O2</li>
+<li>刻蚀 有机物</li>
+</ul>
+</li>
+<li>等离子体
+<ul>
+<li>由电子、离子、中性基团、气体分子同时存在的状态，是物质除固态、液态和气态之外的第四种状态</li>
+</ul>
+</li>
+<li>等离子体刻蚀
+<ul>
+<li>物理：离子轰击(IBE)</li>
+<li>由电场加速的离子</li>
+<li>反应离子刻蚀
+<ul>
+<li>等离子体中包括离子、中性基团等活性成分
+- 化学反应，选择性尚可，各向同性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>刻蚀气体：</li>
+<li>如何在(100)硅片上刻蚀垂直的深槽
+<ul>
+<li>干法刻蚀
+<ul>
+<li>等离子体刻蚀，利用等离子体的反应离子和中性基团进行刻蚀</li>
+<li>气相keshi(XeF2):利用气相反应进行刻蚀</li>
+</ul>
+</li>
+<li>深刻蚀
+<ul>
+<li>时分复用
+<ul>
+<li>叫做Bosch</li>
+<li>流程
+<ul>
+<li>各向同性刻蚀：SF6等离子体实现各向同性刻蚀，刻蚀循环7-16s</li>
+<li>保护：C4F8生成氟碳化合物高分子膜，保护循环5~15s</li>
+<li>刻蚀温度
+<ul>
+<li>液氮冷却：40度</li>
+</ul>
+</li>
+<li>不停地循环</li>
+<li>电感耦合等离子</li>
+<li>电感耦合产生等离子体</li>
+<li>平板电极加速离子</li>
+<li>气体切换系统</li>
+</ul>
+</li>
+<li>低温刻蚀</li>
+<li>刻蚀掩膜
+<ul>
+<li>AL Au</li>
+</ul>
+</li>
+<li>刻蚀速率
+<ul>
+<li>标称6um ~ 20um，一般为2~10um/min</li>
+<li>取决于刻蚀负载</li>
+<li>取决于深宽比</li>
+</ul>
+</li>
+<li>侧壁形貌
+<ul>
+<li>侧壁光洁度：起伏 &lt; 50nm</li>
+<li>侧壁垂直度：90+-2度</li>
+</ul>
+</li>
+<li>RIE-lag
+<ul>
+<li>刻蚀速率与刻蚀结构的深宽比有关，深宽比越大，刻蚀速率越小</li>
+<li>小尺寸刻蚀速率低，同样的结构越刻蚀深度越低</li>
+<li>横向刻蚀 Notchaning
+<ul>
+<li>可以做出悬浮的结构</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>其他刻蚀
+<ul>
+<li>刻蚀与剥离
+<ul>
+<li>对于难以刻蚀的金属，MEMS常用剥离形成图形</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%8D%95%E6%AD%A5%E5%B7%A5%E8%89%BA-%E6%8E%BA%E6%9D%82%E6%A6%82%E8%BF%B0">第五章 单步工艺 掺杂概述</h2>
+<ul>
+<li>目的：有目的的把掺杂掺入硅中
+<ul>
+<li>准确控制，局部掺杂</li>
+<li>明显的改变硅的电性能</li>
+<li>非常小的比例杂质就可以提高si的电导率</li>
+<li>掺杂浓度为10e17 cm-3，相当于在si中掺入百万分之几的杂质</li>
+</ul>
+</li>
+<li>N型掺杂
+<ul>
+<li>电子为主要的载流子，掺杂物为在si中掺入少量V族元素</li>
+</ul>
+</li>
+<li>P型掺杂
+<ul>
+<li>空穴为主要载流子</li>
+<li>si中掺入少量的三族元素(B)可以获得P型</li>
+</ul>
+</li>
+<li>掺杂方式
+<ul>
+<li>热扩散：利用高温驱动杂质穿过si的晶格结构</li>
+<li>离子注入：通过高压离子轰击将杂质引入si片</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E6%89%A9%E6%95%A3%E6%8E%BA%E6%9D%82">扩散掺杂</h3>
+<ul>
+<li>扩散：基本掺杂技术，通过扣三可以将一定种类和少量的杂质掺入硅片或者其他晶体中区，改变其电学性能
+<ul>
+<li>掺杂可以形成双极器件的基区、发射区和隔离区等</li>
+</ul>
+</li>
+<li>基本过程
+<ul>
+<li>预淀积：掺杂杂质以液体或者气体的方式进入到硅片很薄的一层中(80 0~1100摄氏度)</li>
+<li>推进：热使掺杂杂质更深的进入到晶元里面(1000~1250摄氏度)</li>
+<li>激活：杂质原子与晶格中的硅原子键合，温度略高于推进温度</li>
+</ul>
+</li>
+<li>固溶度
+<ul>
+<li>在一定温度下，硅能吸收的杂质数量是一定的，称为固溶度</li>
+<li>硅中的杂质只有一部分被激活，并且提供用于导电的电子或空穴</li>
+<li>如果杂质占据间隙位置，就不会起到杂质的作用</li>
+<li>杂质只有在称为si晶格结构的一部分，才可以做为电子的施主或受主</li>
+<li>加入有助于杂质移动到正常的晶格上去，这一过程称为晶体激活</li>
+</ul>
+</li>
+<li>扩散机制
+<ul>
+<li>填隙式，从半导体晶格的间隙中挤过去，一般扩散系数较高</li>
+<li>替位式，P As等容易与Si原子键合的杂质原子，主要代替硅原子而占据格点的位置，具有低扩散系数的杂质通常为替位式扩散</li>
+</ul>
+</li>
+<li>常见杂质的扩散系数
+<ul>
+<li>B 浓度为1e20以下时候，B的扩散系数与本征扩散率一致，当浓度超过1e20后，不是所有的B原子都能占据到晶格位置，有些原子处于填隙位置，使B的扩散系数急剧降低</li>
+<li>As As在Si中扩散系数较低，因此常用于浅结扩散，此外高浓度下As扩散的电场增强效应很明显~~~~箱形分布，有利于浅结扩散</li>
+<li>P 球的扩散吸收比As高得多，而且扩散分布比较平缓，因此不利于形成浅结，P扩散可用于较大尺寸NMOS的源漏区扩散和低频双极晶体管的发射区扩散</li>
+</ul>
+</li>
+<li>扩散系统
+<ul>
+<li>杂质源：固态源 液态源 气态源</li>
+<li>扩散系统的形式：开管式扩散，闭管式扩散，箱法扩散及固固扩散</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E6%9D%82%E8%B4%A8%E5%88%86%E5%B8%83%E8%A7%84%E5%BE%8B">杂质分布规律</h3>
+<ul>
+<li>一维费克(Fick)扩散方程
+<ul>
+<li>扩散是围观离子不规则运动的统计结果。使粒子由浓度较高的地方向浓度较低的地方进行，使分布趋于均匀。温度差越大，温度越高，扩散就越快</li>
+<li>费克第一定律
+<ul>
+<li>单位面积内垂直扩散通过单位面积的粒子数，即扩散粒子的流密度，与粒子的浓度梯度成正比</li>
+<li>$J(x,t)=-D\frac{\delta C (x,t)}{\delta x}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>费克第二定律，可以针对不同的边界条件和初始条件求出方程的解
+<ul>
+<li>恒定表面浓度扩散
+<ul>
+<li>$C(z,t) = C_s(1-\frac{2}{\sqrt{\pi}}\int_0^{-\lambda ^2}d\lambda) = C_serfc(\frac{z}{2\sqrt{Dt}})$</li>
+<li>特点
+<ul>
+<li>杂质表面浓度$C_s$由于该种杂质在扩散温度下的固溶度所决定。扩散温度不变的时候，表面杂质浓度维持不变</li>
+<li>扩散时间越长，扩散温度越高，扩散进入总量越多</li>
+<li>越深</li>
+<li>适用于高表面浓度浅结</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>恒定杂质总量扩散
+<ul>
+<li>$C(z,t) = \frac{Q_t}{\sqrt{\pi Dt}}e^{-\frac{z^2}{4Dt}}$</li>
+<li>杂质总量保持不变</li>
+<li>扩散时间越长。扩散温度越高，杂质扩散越深，表面浓度越低</li>
+<li>表面杂质浓度可控</li>
+<li>适宜于制作低表面浓度的深结</li>
+</ul>
+</li>
+<li>两步扩散
+<ul>
+<li>双极晶体管中基区B扩散，一般用两步扩散，因为B在Si中的固溶度随温度变化较小，一般在1e20以上，而通常要求基区的表面浓度不能太高，先获得深度，然后再获得较低的表面浓度</li>
+<li>第一步：预扩散(预淀积) 在较低的温度下，采用恒定表面浓度扩散方式</li>
+<li>第二步：主扩散、再分布或者推进扩散，较高温度下，采用恒定杂志总量扩散方式，淀积表面的杂质继续扩散</li>
+<li>两步扩散
+<ul>
+<li>$C(z,t_1,t_2)=\frac{Q_T}{\sqrt{\pi D_2t_2}}exp(-\frac{z^2}{4D_2t_2})$</li>
+<li>再分布后的表面杂质浓度为$\frac{Q_T}{\sqrt{\pi D_2t_2}} = \frac{2C_{S1}}{\pi}\sqrt{\frac{D_1t_1}{D_2t_2}}$</li>
+<li>则$C(z,t_1,t_2) = \frac{2C_{S1}}{\pi}\sqrt{\frac{D_1t_1}{D_2t_2}} exp(-\frac{z^2}{4D_2t_2})$</li>
+<li>扩散工艺掩蔽层厚度的确定
+<ul>
+<li>$t_{min} 4.6\sqrt(D_{sio_2}t)$</li>
+</ul>
+</li>
+<li>B,P,As,Sb等杂质在SiO2中的扩散系数很小，因此可以将SiO2层作为杂质扩散的掩蔽膜</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>存在横向扩散，影响扩散后的图形精度
+<ul>
+<li>由于横向扩散存在，实际扩散区域大于由掩模版决定的尺寸，此效应将直接影响到VLSI的集成度</li>
+</ul>
+</li>
+<li>难以对掺杂总量，结深和杂志浓度分布进行精密的控制</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%A6%BB%E5%AD%90%E6%B3%A8%E5%85%A5%E7%AE%80%E4%BB%8B">离子注入简介</h3>
+<ul>
+<li>对半导体进行掺杂的方法，将杂质电离成电离并聚焦成离子束，在电场中加速获得极高的动能后，注入si中，实现掺杂,精确，重复性好，加工温度低</li>
+<li>气体进入，灯丝通大电流，产生大电压，产生等离子体，高能电子与气体分子碰撞，产生正离子</li>
+<li>产生所需要的离子并且将其引出形成离子束</li>
+<li>等离子体指部分电离的气体</li>
+<li>LMIS，液态金属离子源(LMIS)
+<ul>
+<li>液态金属要求
+<ul>
+<li>与容器不反应</li>
+<li>充分浸润</li>
+<li>低熔点低蒸汽压</li>
+</ul>
+</li>
+<li>技术要求
+<ul>
+<li>亮度：单位源面积发射的进入单位立体角内的离子束电流，LMIS的主要优点之一为亮度高</li>
+<li>能散度，离子束能量分布的半高宽度，LMIS的主要缺点是能散度大，引起色散，降低分辨率</li>
+<li>离子束斑尺寸 5~500nm</li>
+</ul>
+</li>
+<li>离子束 带电原子或带电分子束状流，被电厂或者磁场偏转</li>
+<li>高负偏压电极把正离子通过出口孔提取出来</li>
+<li>不同离子具有不同的电荷质量比，因而在离子分析器电场、磁场中偏转的角度不同</li>
+<li>为了屏蔽荷质比为$q_s$的离子，光阑半径D必须满足$D&lt;|G(\sqrt{\frac{q_s}{q_o}} - 1)|$</li>
+</ul>
+</li>
+<li>磁质量分析器
+<ul>
+<li>E*B质量分析器中，所需离子基本不改变方向，但在输出的离子束红很容易含有中性粒子</li>
+<li>磁质量分析器，所需例子需要改变方向，优点是中性粒子束不能通过</li>
+</ul>
+</li>
+<li>离子束加速
+<ul>
+<li>被选中的离子由步进电压线性加速，获得高能</li>
+</ul>
+</li>
+<li>聚焦和扫描
+<ul>
+<li>离子束被聚焦成为聚束离子束</li>
+<li>离子束的扫描与晶片的移动相结合</li>
+<li>离子束扫过晶体表面，并注入离子</li>
+</ul>
+</li>
+<li>喷淋电子枪
+<ul>
+<li>正离子导致晶片电荷增加，Si片充电，这些电荷使随后正离子难以到达晶片</li>
+<li>产生一个恒定的低能的负电子束来中和硅片上的正电荷</li>
+</ul>
+</li>
+<li>法拉第环剂量控制 控制注入剂量 = $\frac{\int 电流*时间}{原片面积}$
+<ul>
+<li>把总的电流与注入时间联系起来，计算出注入一定剂量需要时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%A6%BB%E5%AD%90%E6%B3%A8%E5%85%A5%E6%9D%82%E8%B4%A8%E5%88%86%E5%B8%83%E8%A7%84%E5%BE%8B">离子注入杂质分布规律</h3>
+<ul>
+<li>平均射程
+<ul>
+<li>射程：离子从入射点到静止点所通过的总路程</li>
+<li>平均~ ：射程的平均值，记为R</li>
+</ul>
+</li>
+<li>平均投影射程
+<ul>
+<li>投影射程：射程在入射方向上的投影长度，记为$X_p$</li>
+<li>平均投影射程：投影射程平均值，$R_p$</li>
+<li>标准偏差：$\Delta R_p = \sqrt{&lt;(x_p - R_p)^2&gt;}$</li>
+<li>注入能量越大，$R_p$和$\Delta R_p$ 越大</li>
+</ul>
+</li>
+<li>平均投影射程与初始能量的关系
+<ul>
+<li>入射离子能量损失受到了核阻挡和电子阻挡</li>
+<li>核阻挡$S_n=\frac{dE_n}{dx}$</li>
+<li>电子阻挡$S_e = \frac{dE_e}{dx} = K_e\sqrt{E}$</li>
+</ul>
+</li>
+<li>$\Delta R_p = \frac{2}{3}R_p(\frac{\sqrt{M_1M_2}}{M_1 + M_2})$</li>
+<li>注入离子浓度分布
+<ul>
+<li>非晶靶中注入离子的浓度分布~~高斯分布
+<ul>
+<li>最大浓度位置在样品内而不是表面</li>
+<li>在$x = R_p$两侧，注入离子浓度对称性下降，并且下降速度越来越快</li>
+<li>结深计算，看ppt lec6 35</li>
+<li>杂质的横向扩展比扩散工艺小得多</li>
+</ul>
+</li>
+<li>注入离子浓度分布理论的应用
+<ul>
+<li>已知注入离子的能量、剂量和衬底杂质浓度时，可以计算出表面浓度和结深/</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%A6%BB%E5%AD%90%E6%B3%A8%E5%85%A5%E7%9A%84%E4%B8%89%E4%B8%AA%E9%97%AE%E9%A2%98">离子注入的三个问题</h3>
+<ul>
+<li>沟道效应 晶体靶对入射离子的阻挡作用是各向异性的，与靶的取向有关，沿着晶体的某些低指数晶向观察时，可以看到一些由原子列包围形成的直通道，称为沟道
+<ul>
+<li>当离子沿着沟道方向入射，射程会比非晶体靶中大得多，偏离高斯函数分布，产生长拖尾</li>
+<li>控制方法
+<ul>
+<li>倾斜硅片，硅片相对于离子束方向倾斜角度，杂质离子进入si中很短距离就会碰撞</li>
+<li>掩蔽氧化层，扰乱注入离子的运动轨迹，该氧化层为牺牲氧化层，需要去除</li>
+<li>Si预非晶化：采用预注入电不活波粒子，预先使单晶硅表面预非晶化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注入损伤
+<ul>
+<li>由离子注入引起的大量空位和间隙原子等点缺陷，以及空位与其他杂质结合而形成的符合缺陷</li>
+<li>注入损伤会使载流子迁移率下降，少子寿命降低，PN结反向漏电流增大</li>
+<li>许多损伤区连在一起会形成连续的非晶层，开始形成连续非晶层的注入剂量称为临界剂量，当注入剂量超过临界剂量，损伤量不再增加而趋于饱和</li>
+<li>影响临界剂量的因素
+<ul>
+<li>注入离子质量越大，临界剂量越小</li>
+<li>注入离子能量越大，临界剂量越小</li>
+<li>注入衬底温度越低，临界剂量越小</li>
+<li>注入速度越大，临界剂量越小</li>
+</ul>
+</li>
+<li>损伤区的分布：
+<ul>
+<li>当入射离子的初始能量较小时，以核阻挡为主，损伤较多，损伤区分布较浅</li>
+<li>入射离子初始能量较大，以电子阻挡为主，损伤较小。随着离子能量降低，逐渐过渡到以核阻挡为主，损伤变严重，分布较深</li>
+<li>入射离子质量较轻，大角度散射，运动轨迹为锯齿形</li>
+<li>较重，散射角小，轨迹比较直</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浅结的形成
+<ul>
+<li>CMOS集成电路要求极浅的源漏结深，B比As更难生成浅结</li>
+<li>后注入方法
+<ul>
+<li>利用si上介质层作为扩散源，&quot;固-固扩散&quot;</li>
+<li>利用辉光放电作为离子源形成超浅结，&quot;等离子浸入掺杂&quot;
+<ul>
+<li>剂量不易控制</li>
+</ul>
+</li>
+<li>固体靶表面覆盖有薄膜时候，可以给他撞进去，&quot;反冲注入掺杂&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E7%A6%BB%E5%AD%90%E6%B3%A8%E5%85%A5%E4%BC%98%E7%BC%BA%E7%82%B9">离子注入优缺点</h3>
+<ul>
+<li>优点
+<ul>
+<li>可控性好</li>
+<li>任意掺杂浓度</li>
+<li>注入温度低，不超过400摄氏度，退火温度也就650摄氏度
+<ul>
+<li>避免高温造成的不利影响</li>
+</ul>
+</li>
+<li>结面比较平坦</li>
+<li>工艺灵活，可以穿透表面薄膜注入到下面的衬底当中，也可以采用多种材料作为掩蔽膜</li>
+<li>均匀性，可重复性好</li>
+<li>横向扩展小</li>
+<li>易于实现自动控制，可以采用电控制</li>
+<li>扩大杂志选择范围</li>
+<li>离子中注入通过质量分析其选出的单一杂质，确保掺杂纯度</li>
+</ul>
+</li>
+<li>缺单
+<ul>
+<li>离子注入将在靶中形成大量晶格缺陷，需要进行退火</li>
+<li>离子注入难以取得很深的结深</li>
+<li>离子注入的生产效率比扩散工艺低</li>
+<li>离子注入系统复杂昂贵</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E9%80%80%E7%81%AB%E6%8A%80%E6%9C%AF">退火技术</h3>
+<ul>
+<li>减少注入损伤的方法 退火
+<ul>
+<li>注入到半导体中杂质停留在间隙位置，不会释放出载流子,也就不会改变半导体电特性，不会达到掺杂目的</li>
+<li>退火后，杂质进入替位位置释放出载流子，改变半导体电特性。称为杂质原子的电激活</li>
+</ul>
+</li>
+<li>退火处理可以减少注入损伤，使注入的杂质原子进入替位位置实现电激活</li>
+<li>离子注入后一定要进行电激活
+<ul>
+<li>激活杂质和消除注入损伤</li>
+<li>移位原子与注入的杂质原子在高温下获得较高的迁移率而在晶体中移动</li>
+<li>热退火 温度范围为800 ~ 1000摄氏度，退火改变杂质分布</li>
+<li>快速热退火(RTA)：快速热处理机，通入Ar和N2，几乎没有掺杂杂质进行再扩散，温度一般为1000摄氏度，时间较短</li>
+</ul>
+</li>
+<li>退火实际杂志分布比预测深入，离子注入形成高浓度缺陷增强了杂志的扩散，瞬时增强扩散
+<ul>
+<li>可以在退火前进行一次500~650摄氏度之间的补充处理来消除缺陷</li>
+</ul>
+</li>
+<li>热退火缺点
+<ul>
+<li>电激活不完全</li>
+<li>产生二次缺陷</li>
+<li>少子寿命和扩散长度不可以回复</li>
+<li>较高温度的热退火会导致明显的杂质再分布，抵消离子诸如技术固有优点</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec7-%E5%8D%95%E6%AD%A5%E5%B7%A5%E8%89%BA%E4%B9%8B%E7%83%AD%E6%B0%A7%E5%8C%96">lec7 单步工艺之热氧化</h2>
+<h3 id="%E6%B0%A7%E5%8C%96%E6%A6%82%E8%BF%B0">氧化概述</h3>
+<ul>
+<li>目的：在Si衬底表面生成一层SiO2薄膜</li>
+<li>用途
+<ul>
+<li>保护硅表面火作为缓冲层 垫氧化层</li>
+<li>去除硅表面的玷污 牺牲氧化层</li>
+<li>掺杂阻挡层 研磨氧化层</li>
+<li>器件电隔离 场氧</li>
+<li>栅电介质 栅氧化层，隧道氧化层</li>
+<li>器件表面保护或钝化层</li>
+</ul>
+</li>
+<li>掩蔽作用</li>
+<li>基本原理
+<ul>
+<li>在T = 900 ~ 1200摄氏度的高温下，利用si与氧化剂之间的氧化反应，Si衬底上形成Sio2薄膜</li>
+<li>干氧氧化
+<ul>
+<li>氧化剂是分子氧</li>
+<li>速度很慢，以控制</li>
+<li>致密纯净</li>
+</ul>
+</li>
+<li>湿氧氧化
+<ul>
+<li>水蒸汽 分子氧</li>
+<li>较快的生长速度</li>
+<li>不够致密</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>优点
+<ul>
+<li>更加密集和坚固</li>
+<li>更纯净</li>
+<li>可以达到更精确和均匀的厚度</li>
+<li>消耗表面的Si(用来去除杂质)</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>需要暴露的si表面</li>
+<li>速度比不过CVD</li>
+<li>高温下生成，要求硅片上所有的东西都必须耐高温</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E6%B0%A7%E5%8C%96%E6%A8%A1%E5%9E%8B">氧化模型</h3>
+<ul>
+<li>迪尔-格罗夫模型：氧化层厚度大于300A 用于预测氧化层厚度</li>
+<li>联立方程，解得$C_i=\frac{HP_s}{1+\frac{k_s}{h}+\frac{k_st_{ox}}{D_{SiO_2}}}$</li>
+<li>常压下$h&gt;&gt;k_s$，可以忽略，热氧化时候气流影响很弱，可以得到
+<ul>
+<li>二氧化硅和硅界面处的氧化剂流密度 $J_3=k_sC_i=\frac{k_sHP_g}{1+\frac{k_st_{ox}}{D_{SiO_2}}}$</li>
+</ul>
+</li>
+<li>剩下的看ppt，懒得敲了</li>
+<li>$\tau = \frac{t_0^2+At_0}{B}$</li>
+<li>$t_{ox} = \frac{A}{2}(\sqrt{1+\frac{(t+\tau )}{A^2/4B}} - 1)$</li>
+<li>氧化完成后的厚度，先用$t_0$确定$\tau$，再将$\tau + t$ 算出总的有效氧化时间，然后算出氧化层的厚度</li>
+</ul>
+<h3 id="%E6%B0%A7%E5%8C%96%E8%86%9C%E7%94%9F%E9%95%BF%E6%9C%BA%E5%88%B6">氧化膜生长机制</h3>
+<ul>
+<li>
+<p>高纯度氧气必须直接与si接触</p>
+</li>
+<li>
+<p>随着氧化层的生长，si被消耗</p>
+</li>
+<li>
+<p>初始氧化层形成后，氧气必须通过氧化层扩散到Si中6</p>
+</li>
+<li>
+<p>氧化速率与氧化剂分压$P_g$成正比</p>
+</li>
+<li>
+<p>需要极薄的氧化膜的时候，例如MOSFET栅极氧化，可以采用分压热氧化技术</p>
+</li>
+<li>
+<p>硅表面晶向有关，即$\frac{B}{A_{(111)}} &gt;\frac{B}{A_{(100)}}$</p>
+</li>
+<li>
+<p>抛物线速率系数B与晶向无关</p>
+</li>
+<li>
+<p>高浓度$Na^+$增大B和$\frac{B}{A}$</p>
+</li>
+<li>
+<p>氧化剂中若含有$Cl_2$ 等，有利于改善二氧化硅质量和界面性质</p>
+</li>
+<li>
+<p>重掺杂si比轻掺杂氧化块</p>
+</li>
+</ul>
+<h3 id="%E8%96%84%E8%86%9C%E6%80%A7%E8%B4%A8">薄膜性质</h3>
+<ul>
+<li>结晶形$Si-O$四面体。在空间规则排列而成</li>
+<li>无定形是$Si-O$四面体在空间无规则排列而成</li>
+<li>氧空位出现易于硅空位</li>
+<li>二氧化硅膜化学稳定性极高
+<ul>
+<li>不溶于酸，除了氢氟酸</li>
+</ul>
+</li>
+<li>二氧化硅膜掩蔽性质
+<ul>
+<li>SiO2要有足够的厚度，一定的杂质扩散时间、扩散温度下，有一最小厚度</li>
+</ul>
+</li>
+<li>Si-SiO2界面特性以及解决
+<ul>
+<li>可动离子电荷</li>
+<li>固定氧化物电荷</li>
+<li>界面陷阱电荷</li>
+<li>氧化物陷阱电荷：Si-SiO2界面附近 --- 300摄氏度退火</li>
+<li>氧化层上的离子玷污</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E6%B0%A7%E5%8C%96%E8%86%9C%E7%9A%84%E8%B4%A8%E9%87%8F%E6%A3%80%E6%B5%8B">氧化膜的质量检测</h3>
+<ul>
+<li>氧化膜厚度的测量方法
+<ul>
+<li>光干涉法</li>
+<li>椭圆偏振光法</li>
+<li>击穿电压法</li>
+<li>电容法</li>
+<li>比色法</li>
+</ul>
+</li>
+<li>氧化膜缺陷检测
+<ul>
+<li>包括氧化膜针孔、氧化诱生层错</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec8-%E6%B2%89%E7%A7%AF">lec8 沉积</h2>
+<h3 id="%E7%89%A9%E7%90%86%E6%B0%94%E7%9B%B8%E6%B2%89%E7%A7%AF">物理气相沉积</h3>
+<ul>
+<li>利用外界能量把被淀积靶材料从固体变为气体，并再变成固态沉积在衬底</li>
+<li>只有物质相变没有化学</li>
+<li>可以淀积多种金属和非金属，成本低，稳定性好，薄膜质量和台阶覆盖率较低</li>
+<li>蒸镀 溅射</li>
+</ul>
+<h3 id="%E8%92%B8%E9%95%80">蒸镀</h3>
+<ul>
+<li>局部加热使靶材料融熔化，产生的蒸汽沉积在目标基底上</li>
+<li>加热方法
+<ul>
+<li>热蒸镀；利用电阻产生的热量加入靶材料使其熔化</li>
+<li>电子束蒸镀：利用加速的电子束轰击靶材料将其熔化</li>
+</ul>
+</li>
+<li>台阶覆盖
+<ul>
+<li>蒸镀具有较强方向性，大部分被镀材料粒子沿着一定方向淀积到衬底上</li>
+<li>覆盖均匀性较差，通过旋转硅片可以减轻</li>
+<li>适用于剥离工艺</li>
+<li>改善方式
+<ul>
+<li>淀积过程中旋转并且倾斜衬底</li>
+<li>提高衬底温度，增强表面移动和扩散率</li>
+<li>增加靶材料的面积</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PVD优缺点
+<ul>
+<li>蒸镀和喷溅都有方向性</li>
+<li>大批量生产，均匀性较好</li>
+<li>适用材料范围较广</li>
+<li>台阶覆盖性一般</li>
+<li>薄膜性能可控</li>
+<li>设备较为复杂</li>
+</ul>
+</li>
+</ul>
+<h3 id="%E5%8C%96%E5%AD%A6%E6%B0%94%E7%9B%B8%E6%B2%89%E7%A7%AF">化学气相沉积</h3>
+<ul>
+<li>CVD
+<ul>
+<li>高温化学反应过程，将反应气体和硅片在高温下产生化学反应或气体之间反应，将固态产物沉积在衬底表面</li>
+<li>适用于多种材料</li>
+<li>较好的台阶覆盖率和均匀性</li>
+<li>薄膜性质变化大，与采用的化学反应有关</li>
+<li>APCVD 常压CVD</li>
+<li>LPCVD 低压CVD</li>
+<li>等离子增强CVD (PECVD)</li>
+</ul>
+</li>
+<li>PSG(磷硅玻璃) 低温二氧化硅
+<ul>
+<li>高温退火增加流动性</li>
+<li>较好的共形和均匀性</li>
+<li>可以用于MEMS器件的牺牲层</li>
+</ul>
+</li>
+<li>LPCVD
+<ul>
+<li>高温：金属化后不能使用</li>
+<li>质量：比PECVD好</li>
+<li>共形较好，应力较大</li>
+</ul>
+</li>
+<li>PECVD
+<ul>
+<li>低温：金属化后可以继续使用</li>
+<li>质量较差，针孔较多</li>
+<li>应力较小，控制比较容易，共形较差</li>
+</ul>
+</li>
+</ul>
+<h2 id="lec9-mems%E5%B7%A5%E8%89%BA">lec9 MEMS工艺</h2>
+<h3 id="mems%E6%8A%80%E6%9C%AF">MEMS技术</h3>
+<ul>
+<li>MEMS 微电子机械系统</li>
+<li>微系统是尺寸在微米到毫米量级的集成系统</li>
+<li>典型微系统包括微机械结构、传感器、执行器和控制电路，可以实现测量、信息处理和执行功能</li>
+<li>多学科交叉的科学领域</li>
+<li>特点
+<ul>
+<li>结构尺寸微小：微米到毫米，不完全是宏观对象的按比例缩小</li>
+<li>多能量域系统：MEMS中的机械代表一切具有能量转换，传输等功能的效应</li>
+<li>基于但不限于集成电路技术和微加工技术制造</li>
+<li>宏观物理学规律仍然成立，控制因素发生变化
+<ul>
+<li>尺寸效应</li>
+</ul>
+</li>
+<li>具有宏观对象不具有的新效应、新性能</li>
+</ul>
+</li>
+<li>智能手机是MEMS的典型应用</li>
+</ul>
+<h3 id="%E8%A1%A8%E9%9D%A2%E5%BE%AE%E5%8A%A0%E5%B7%A5%E6%8A%80%E6%9C%AF">表面微加工技术</h3>
+<ul>
+<li>方法：薄膜沉积+刻蚀</li>
+<li>核心：牺牲层-Sacrificial Layer</li>
+<li>流程
+<ul>
+<li>淀积牺牲层
+<ul>
+<li>PECVD</li>
+</ul>
+</li>
+<li>刻蚀牺牲层(RIE)</li>
+<li>淀积结构层
+<ul>
+<li>LPCVD</li>
+</ul>
+</li>
+<li>光刻结构层</li>
+<li>刻蚀结构层(RIE</li>
+<li>去除牺牲层，释放结构层</li>
+</ul>
+</li>
+<li>结构层
+<ul>
+<li>制造要求：容易淀积、残余应力满足要求，考虑与牺牲层的刻蚀选择比</li>
+<li>多晶硅结构层：强度高、柔性 IC兼容 淀积和刻蚀容易</li>
+</ul>
+</li>
+<li>牺牲层
+<ul>
+<li>制造要求：容易淀积、容易刻蚀、与结构层刻蚀选择比高</li>
+</ul>
+</li>
+<li>薄膜应力
+<ul>
+<li>去除外部负载后薄膜内任然存在的应力</li>
+<li>成因：
+<ul>
+<li>外部应力：外加作用力、热膨胀失配、塑性变形</li>
+<li>本征应力：生长晶格失配、相变</li>
+</ul>
+</li>
+<li>降低方法
+<ul>
+<li>合适的淀积条件(温度，压力等)</li>
+<li>合适的退火条件(压力)</li>
+<li>多层相同薄膜采用不同条件获得不同应力状态相互补偿</li>
+<li>多层不同薄膜采用不同条件获得不同应力状态相互补偿</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>粘连
+<ul>
+<li>在去除牺牲层过程中或工作过程中，表面微加工技术制造的微结构会部分塌下来与衬底粘在一起</li>
+<li>机理：毛细作用力、氢键桥接、静电引力、范德华力</li>
+<li>化学机理控制、永久失效、与结构机械强度相关</li>
+</ul>
+</li>
+<li>避免粘连方法
+<ul>
+<li>利用机械结构变化</li>
+<li>避免液气界面和液气相变</li>
+<li>表面改性使液体接触从凹形变为凸形</li>
+<li>牺牲层干法刻蚀</li>
+</ul>
+</li>
+<li>应用实例
+<ul>
+<li>ADI加速度传感器</li>
+<li>梳状叉指电容
+<ul>
+<li>静电驱动</li>
+<li>电容检测</li>
+<li>谐振工作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+
+</body>
+</html>
